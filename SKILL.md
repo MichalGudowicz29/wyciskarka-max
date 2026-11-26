@@ -45,4 +45,4 @@ python3 "SKILL_DIR/scripts/map.py" .wyciskarka
 python3 "SKILL_DIR/scripts/map.py" .wyciskarka mapa-okazji.html
 ```
 
-Oddaj link do HTML i wskaż zapisany stan do wznowienia. Raport można przesłać jako jeden plik. Nie wysyłaj zgłoszeń i nie ustawiaj monitoringu bez osobnej prośby.
+Oddaj link do HTML i wskaż zapisany stan do wznowienia. Na końcu odpowiedzi dodaj gotową do wklejenia komendę z rzeczywistą bezwzględną ścieżką pliku. Użyj `open` na macOS, `xdg-open` na Linuksie lub `Start-Process -FilePath` w PowerShell na Windows. Zacytuj ścieżkę zgodnie z używaną powłoką. Raport można przesłać jako jeden plik. Nie wysyłaj zgłoszeń i nie ustawiaj monitoringu bez osobnej prośby.

@@ -8,9 +8,9 @@ Skill dla Codexa, Claude Code i Antigravity. Analizuje projekt i przygotowuje in
 npx skills add MichalGudowicz29/wyciskarka-max -g -a codex claude-code antigravity
 ```
 
-Agent zapisuje profil, postęp i pojedyncze rekordy w lokalnym katalogu `.wyciskarka/`. Przy kolejnym uruchomieniu może wznowić poszukiwania albo wygenerować mapę z zapisanych danych. Kolumny przedstawiają miesiące, karty grupują się według zakresu dopracowania, a panel filtruje typ okazji i finansowanie. Kliknij kartę, aby zobaczyć wymagania, datę sprawdzenia i źródła.
+Agent zapisuje profil, postęp i pojedyncze rekordy w lokalnym katalogu `.wyciskarka/`. Przy kolejnym uruchomieniu może wznowić poszukiwania albo wygenerować mapę z zapisanych danych. Suwak pod mapą przewija kolumny miesięcy. Panel pokazuje liczbę okazji według rodzaju i pozwala filtrować wyniki według rodzaju i finansowania. Kliknij kartę, aby zobaczyć wymagania, datę sprawdzenia i źródła.
 
-Do wyszukiwania potrzebny jest internet, do eksportu Python 3. Gotowy `mapa-okazji.html` otwiera się w przeglądarce offline. Szablon jest dołączony do skilla.
+Do wyszukiwania potrzebny jest internet, do eksportu Python 3. Gotowy `mapa-okazji.html` otwiera się w przeglądarce offline. Po eksporcie agent podaje link i komendę do otwarcia raportu z terminala. Szablon jest dołączony do skilla.
 
 ## Instalacja z pobranego repozytorium
 

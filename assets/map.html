@@ -11,12 +11,21 @@ h1,h2,h3,p{margin:0}h1,h2{font-family:Georgia,serif;font-weight:500}h1{font-size
 .timeline{margin:0;display:flex;align-items:center;gap:16px;padding:6px 18px;border-top:1px solid #c5cbbb;background:#fffefb;font-size:13px}
 .timeline input{flex:1;min-width:0;margin:0;height:32px;cursor:ew-resize}
 .timeline input:disabled{cursor:default;opacity:.45}
+.stats{margin-top:20px;padding-top:12px;border-top:1px solid #c2cabe;font-size:14px}
+.stats summary{cursor:pointer;font-weight:600}
+.stats dl{margin:8px 0 0}
+.stat-row{display:flex;justify-content:space-between;gap:12px;padding:3px 0;overflow-wrap:anywhere}
+.stat-row dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums}
 @media(min-width:701px) and (min-height:520px){
   body{height:100dvh;display:grid;grid-template-rows:auto minmax(0,1fr)}
   .map-panel{grid-template-rows:auto minmax(0,1fr) auto}
   aside{overflow:auto}
 }
 @media(max-width:700px){main{display:flex;flex-direction:column}aside{order:-1;padding:10px 16px;border:0;border-bottom:1px solid #bdc9be}aside h2{font-size:18px}#filters{display:flex;align-items:end;gap:10px;flex-wrap:wrap}label{margin:4px 0;font-size:13px}select{padding:5px}.column{width:235px}#map{padding:20px 14px;gap:14px}.root{max-width:110px}.root:after{width:14px}.note:empty{display:none}.note{margin:4px 0}#canvas{height:48dvh}}
+@media(max-width:700px){
+  header{padding-block:16px}
+  .stats{margin-top:8px;padding-top:6px}
+}
 </style>
 <header><h1>Mapa okazji</h1><p id="subtitle"></p></header>
 <main><section class="map-panel" aria-label="Mapa">
@@ -24,7 +33,9 @@ h1,h2,h3,p{margin:0}h1,h2{font-family:Georgia,serif;font-weight:500}h1{font-size
 <div id="canvas" tabindex="0" aria-label="Przewijana mapa okazji"><div id="map"></div></div>
 <label class="timeline">Oś czasu<input id="timeline" type="range" min="0" max="0" value="0" aria-controls="canvas" disabled></label>
 </section>
-<aside><h2>Widok mapy</h2><div id="filters"><label>Rodzaj<select id="type"><option value="">Wszystkie</option></select></label><label>Kolejność<select id="sort"><option value="1">Od najbliższych</option><option value="-1">Od najpóźniejszych</option></select></label><label class="check"><input type="checkbox" id="money"> Tylko z pieniędzmi</label></div><p class="note" id="coverage"></p></aside></main>
+<aside><h2>Widok mapy</h2><div id="filters"><label>Rodzaj<select id="type"><option value="">Wszystkie</option></select></label><label>Kolejność<select id="sort"><option value="1">Od najbliższych</option><option value="-1">Od najpóźniejszych</option></select></label><label class="check"><input type="checkbox" id="money"> Tylko z pieniędzmi</label></div>
+<details id="stats" class="stats" hidden><summary>Okazje według rodzaju</summary><dl id="type-counts"></dl></details>
+<p class="note" id="coverage"></p></aside></main>
 <dialog aria-labelledby="title"><button autofocus id="close">Zamknij</button><small id="kind"></small><h2 id="title"></h2><div id="details"></div></dialog>
 <script type="application/json" id="data">__MAP_DATA__</script>
 <script>
@@ -106,7 +117,18 @@ function draw() {
 }
 $('subtitle').textContent=data.project+' · '+data.period;
 $('coverage').textContent=data.coverage;
-for (const t of [...new Set(data.rows.map(r=>r.type))].sort()) $('type').add(new Option(t,t));
+const typeCounts = new Map();
+for (const row of data.rows) {
+  typeCounts.set(row.type, (typeCounts.get(row.type) ?? 0) + 1);
+}
+for (const type of [...typeCounts.keys()].sort((a, b) => a.localeCompare(b, 'pl'))) {
+  $('type').add(new Option(type, type));
+  const stat = el('div', null, 'stat-row');
+  stat.append(el('dt', type), el('dd', typeCounts.get(type)));
+  $('type-counts').append(stat);
+}
+$('stats').hidden = typeCounts.size === 0;
+$('stats').open = !matchMedia('(max-width:700px)').matches;
 $('filters').onchange=draw;
 $('close').onclick=()=>dialog.close();
 timeline.addEventListener('input', () => {
