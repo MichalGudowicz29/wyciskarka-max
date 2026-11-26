@@ -16,8 +16,8 @@ Domyślnie obejmij najbliższe 12 miesięcy od dnia wykonania. Dostosuj zakres d
 - Zacznij lokalnie, jeżeli projekt ma związek z miejscem. Sprawdź programy miasta, regionu, uczelni, inkubatorów i instytucji, które pracują z odbiorcami projektu. Rozszerz zasięg na kraj i osiągalne programy zagraniczne.
 - Sprawdź różne formy wykorzystania tego samego wyniku. Demo może pasować do konkursu lub dnia demonstracyjnego, pomiar do posteru, zbiór danych do publikacji, a prototyp do pilotażu. Rozważ również granty, stypendia, hackathony, wyzwania branżowe, warsztaty i akceleratory, zależnie od projektu.
 - Szukając firm, wskaż konkretny problem firmy i publiczną drogę wejścia, np. nabór do pilotażu, zespół przyjmujący propozycje współpracy lub wyzwanie technologiczne. Otwarty kanał współpracy opisuj zgodnie z jego funkcją. Sama lista znanych marek lub ogólny adres centrali nie uzasadniają rekomendacji.
-- Wykonaj osobną rundę poszukiwań dla sąsiednich zastosowań. Zmień w zapytaniu odbiorcę, zastosowanie danych lub sposób pokazania wyniku. Dla obiecującego trafienia odszukaj konkretne kryterium i najmniejszą zmianę, która je spełni. Przykładowo eksport danych może wystarczyć do lokalnego pilotażu, jeśli odbiorca wymaga określonego formatu; gdy regulamin wymaga także pełnego wdrożenia, sam eksport nie wystarczy.
-- Sprawdź archiwa organizatorów i daty ogłoszeń wcześniejszych edycji. Kontynuuj, dopóki istotny typ okazji lub lokalny odbiorca pozostaje niesprawdzony. Scal duplikaty tej samej edycji i ścieżki. Krótko wskaż luki w pokryciu zamiast dopełniać listę przypadkowymi pozycjami.
+- Wykonaj osobną rundę poszukiwań dla sąsiednich zastosowań. Zmień w zapytaniu odbiorcę, zastosowanie danych lub sposób pokazania wyniku. Ustal, jakiej cechy, perspektywy lub dowodu wymaga organizator. Przykład dla konkursu dostępności: „Brakuje dowodu korzyści dla osób o ograniczonej mobilności. Którą barierę projekt pomaga im pokonać?”. Sposób realizacji zostaw właścicielowi projektu.
+- Sprawdź archiwa organizatorów i daty ogłoszeń wcześniejszych edycji. Kontynuuj, dopóki istotny typ okazji lub lokalny odbiorca pozostaje niesprawdzony. Sprawdź też małe nabory, sesje tematyczne, nagrody towarzyszące oraz wsparcie udziału. Niski prestiż, mała nagroda lub niepewne dopasowanie nie eliminują tropu z wiarygodnym źródłem i sensownym związkiem z projektem. Przy aktualizacji rozlicz każdy wpis z poprzedniej listy: uwzględnij go albo odnotuj przyczynę zamknięcia lub dyskwalifikacji. Scal duplikaty tej samej edycji i ścieżki. Krótko wskaż luki w pokryciu zamiast dopełniać listę przypadkowymi pozycjami.
 
 ## Zweryfikuj każdą okazję
 
@@ -28,7 +28,7 @@ Oceń dwie rzeczy niezależnie:
 | Pytanie | Jak zapisać odpowiedź |
 |---|---|
 | Czy można aplikować? | Nabór otwarty, zapowiedziany, ciągły lub edycja do obserwacji. Dla zwykłej ścieżki współpracy użyj „kontakt bez terminu”. Dla edycji historycznej podaj rok archiwum, dowód cykliczności i sugerowaną datę sprawdzenia strony. Jeżeli znana jest tylko jedna edycja, nazwij powrót hipotezą. |
-| Czy projekt pasuje? | **Gotowe** — wskaż istniejący dowód i potrzebne materiały do wysłania. **Po małej zmianie** — wskaż jeden ograniczony zakres prac, kryterium odbioru i szacowany nakład. **Do oceny właściciela** — podaj przesłankę za, konkretną niewiadomą oraz jedno pytanie, które rozstrzyga sens zgłoszenia. |
+| Czy projekt pasuje? | **Gotowe** — wskaż istniejący dowód i potrzebne materiały do wysłania. **Po małej zmianie** — nazwij brakujący aspekt i pytanie, na które projekt powinien odpowiedzieć, aby spełnić wskazane kryterium. Odróżnij wymóg regulaminu od własnej sugestii wzmocnienia zgłoszenia. **Do oceny właściciela** — podaj przesłankę za, konkretną niewiadomą oraz jedno pytanie, które rozstrzyga sens zgłoszenia. |
 
 Pewną dyskwalifikację pomiń lub krótko wyjaśnij, jeśli dotyczy pozornie oczywistej okazji. Gotowa technologia może wymagać tygodni przygotowania artykułu. Oszacuj osobno pracę nad projektem i przygotowanie zgłoszenia. Nadaj pierwszeństwo osiągalnym okazjom na podstawie wartości dla autora, dowodów dopasowania, kosztu i czasu pozostałego na zgłoszenie.
 
@@ -36,7 +36,24 @@ Pewną dyskwalifikację pomiń lub krótko wyjaśnij, jeśli dotyczy pozornie oc
 
 Utwórz rzeczywisty PDF w języku użytkownika. Domyślnie zapisz go w katalogu projektu jako kalendarz-okazji-<projekt>-<RRRR-MM-DD>.pdf. Zachowaj poprzedni raport, jeśli nazwa już istnieje. Użyj skilla pdf, jeśli jest dostępny, lub wydruku lokalnego HTML do PDF w przeglądarce z regułami druku A4. Dobierz czcionkę obsługującą znaki języka raportu.
 
-1. Na początku podaj nazwę projektu, zakres dat, dzień sprawdzenia oraz najważniejsze działania wraz z uzasadnieniem pierwszeństwa.
-2. W kalendarzu ułóż działania według daty rozpoczęcia przygotowań. Rozróżnij sugerowany start pracy, oficjalny termin zgłoszeń i datę wydarzenia. Zachowaj godzinę i strefę, jeśli ogłoszone. Osobno pokaż wcześniejsze terminy abstraktu, dofinansowania lub rejestracji, gdy wpływają na decyzję.
-3. Dla każdej pozycji dodaj krótką kartę z organizatorem, wartością dla projektu, oceną gotowości, brakującą pracą lub materiałem, kosztami istotnymi dla decyzji, pierwszym krokiem i klikalnym źródłem. Wydziel obserwowane edycje, okazje bez terminu oraz pozycje do oceny właściciela. Sugerowany dzień sprawdzenia strony oznacz jako przypomnienie. Jeśli nie znaleziono otwartych naborów, powiedz to wprost.
-4. Otwórz wynik, sprawdź kolejność i czytelność stron, polskie znaki, zgodność dat i aktywne odsyłacze PDF. Podaj użytkownikowi link do pliku i jedno najbliższe działanie. Zakończ na raporcie; wysyłanie zgłoszeń i uruchamianie monitoringu wymaga osobnego polecenia.
+### 1. Pełny kalendarz
+
+Zacznij pierwszą stronę od tytułu „Kalendarz okazji”, nazwy projektu, zakresu dat, daty weryfikacji i krótkiej legendy. Bezpośrednio pod nimi umieść tabelę w układzie poziomym A4.
+
+| Start pracy | Termin i jego rodzaj | Okazja | Ile pracy | Dlaczego / uwagi |
+|---|---|---|---|---|
+| Sugerowana data rozpoczęcia | Zgłoszenie, abstrakt, wsparcie lub wydarzenie; godzina i strefa, gdy podane | Nazwa i ścieżka | Materiał do przygotowania i orientacyjny nakład | Jedno zdanie o korzyści lub warunku, który wpływa na decyzję |
+
+Uwzględnij wszystkie znalezione, realne lub warunkowe okazje. Sortuj rosnąco według terminu działania. Jeśli jedyną znaną datą jest wydarzenie, oznacz ją jako datę wydarzenia. Daj osobne wiersze dla terminów wymagających osobnych decyzji, np. stypendium wyjazdowego i abstraktu na tę samą konferencję. Przybliżone okna umieść w odpowiednim miesiącu z oznaczeniem „szacunek” oraz rokiem źródłowej edycji. Po wierszach datowanych dodaj w tej samej tabeli grupę „Bez terminu / obserwować”. Tam wpisz również tropy bez wiarygodnego okna czasowego, z sugerowanym dniem ponownego sprawdzenia w uwagach.
+
+Zastosuj krótkie wpisy, cienkie linie i wyraźny nagłówek powtarzany na kolejnych stronach. Potwierdzone daty oznacz na zielono, szacowane na bursztynowo, a pilne wiersze jasnoczerwonym tłem i słowami „działaj teraz”. Status musi pozostać czytelny w czarno-białym wydruku. Pozwól tabeli przejść na kolejne strony zamiast zmniejszać tekst lub usuwać mniej istotne okazje.
+
+### 2. Szczegóły okazji
+
+Po całej tabeli opisz każdą okazję raz, w kolejności pierwszego wystąpienia i pod tą samą nazwą. Podaj organizatora, krótki opis, korzyść dla projektu, status naboru, gotowość, warunki udziału, potrzebny materiał, istotne koszty i klikalny link bezpośrednio do źródła. Dla projektu już pasującego wskaż dowód. Przy luce opisz brakujący obszar i pytanie, na które zgłoszenie powinno odpowiadać. Pomiń projektowanie funkcji i wybór technologii. Oznacz pozycje do oceny właściciela również wtedy, gdy weryfikacji wymaga warunek formalny.
+
+### Nagrody i finansowanie
+
+Jeśli źródła potwierdzają choć jedną możliwość otrzymania pieniędzy, w drugiej sekcji dodaj zbiorczą tabelę: **Okazja | Rodzaj świadczenia | Kwota i waluta | Dla kogo / warunki | Źródło**. Rozróżnij nagrodę do wygrania, grant na realizację, stypendium i zwrot kosztów. Podaj kwoty za miejsca, „do” dla limitu oraz „pula łączna”, gdy organizator podaje wyłącznie budżet. Zaznacz, czy kwota dotyczy osoby, zespołu lub projektu, o ile źródło to rozstrzyga. Przy potwierdzonej nagrodzie o nieujawnionej wartości wpisz „kwota niepodana”. Kwotę poprzedniej edycji podpisz rokiem. Gdy żadne źródło nie podaje informacji o pieniądzach, pomiń tabelę; brak informacji nie oznacza zera.
+
+Przed oddaniem porównaj listę zweryfikowanych okazji z wierszami kalendarza i opisami. Każda zachowana okazja, także warunkowa i bez daty, musi być widoczna w obu miejscach. Sprawdź kwoty w źródłach oraz widok PDF: podziały stron, polskie znaki, daty i aktywne linki. Podaj link do pliku i najbliższe działanie. Wysyłanie zgłoszeń i uruchamianie monitoringu wymaga osobnego polecenia.
