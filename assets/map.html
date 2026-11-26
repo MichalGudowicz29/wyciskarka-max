@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mapa okazji</title>
+<style>
+*{box-sizing:border-box}body{margin:0;color:#1e332f;background:#faf9f5;font:15px/1.5 system-ui,sans-serif}header{padding:24px clamp(18px,4vw,64px);border-bottom:1px solid #b8c2b7;background:#fffefb}
+h1,h2,h3,p{margin:0}h1,h2{font-family:Georgia,serif;font-weight:500}h1{font-size:clamp(30px,4vw,52px);letter-spacing:-.035em;line-height:1.1}header p,small,.muted{color:#53665c}header p{margin-top:6px}main{display:grid;grid-template-columns:minmax(0,1fr) 245px}aside{padding:24px 20px;border-left:1px solid #c2cabe;background:#f6f6ee}aside h2{font-size:26px}label{display:block;margin:18px 0 4px;font-weight:600}select,button{font:inherit;color:inherit}select{display:block;width:100%;margin-top:6px;padding:8px;background:#fff;border:1px solid #adb8ac;border-radius:4px}input{accent-color:#235e4b}button{cursor:pointer}button:focus-visible,a:focus-visible,select:focus-visible,#canvas:focus-visible{outline:3px solid #ab520c;outline-offset:3px}
+#canvas{height:calc(100dvh - 132px);min-height:360px;overflow:auto;background-color:#f6f6ef;background-image:radial-gradient(#c6cfbf .8px,transparent .8px);background-size:16px 16px;overscroll-behavior:contain}
+#map{display:flex;align-items:flex-start;width:max-content;min-width:100%;padding:30px 32px 48px;gap:24px}.root{background:#204f43;color:white;border-radius:6px;padding:13px 17px;max-width:210px;margin-top:44px;position:relative;font-weight:650;overflow-wrap:anywhere}.root:after{content:"";position:absolute;left:100%;width:24px;top:24px;border-top:2px solid #83a491}
+.column{width:260px;flex:none}.month{font-size:23px;text-transform:capitalize;margin-bottom:12px}.lane{border-left:2px solid #83a491;padding:6px 0 6px 13px;margin-bottom:18px}.column{position:relative}.month{padding-bottom:8px;border-bottom:2px solid #83a491}.root{margin-top:19px}.column:not(:last-child):after{content:"";position:absolute;top:42px;left:100%;width:24px;border-top:2px solid #83a491}#canvas{cursor:grab}#canvas.drag{cursor:grabbing;user-select:none}.lane h3{font:600 12px system-ui;color:#446457;margin-bottom:8px}
+.card{display:block;text-align:left;background:#fffefb;border:1px solid #becabe;border-radius:5px;padding:12px 14px;width:100%;margin:6px 0;overflow-wrap:anywhere}.card:hover{border-color:#2e755e;background:#f5fcf5}.card strong,.card small{display:block}.card strong{font-size:16px;line-height:1.3;margin:4px 0}.cash{color:#24624d;font-weight:650}.notice{max-width:65ch;padding:18px}.bar{display:flex;align-items:center;gap:8px;padding:9px 18px;border-bottom:1px solid #c5cbbb;background:#fffefb}.bar output{margin-right:auto}.nav,dialog button{border:1px solid #a4b1a5;border-radius:4px;background:white;padding:4px 12px}dialog{color:inherit;background:#fffefb;width:min(500px,92vw);border:1px solid #9da99c;border-radius:8px;padding:24px;max-height:85dvh;overflow:auto}dialog::backdrop{background:#142e266b}dialog button{float:right}dialog h2{font-size:30px;line-height:1.15;margin:12px 0;overflow-wrap:anywhere}dialog p,dialog ul{margin:10px 0}a{color:#195f4e;text-underline-offset:3px}.check{font-size:14px}.note{font-size:13px;margin-top:24px;overflow-wrap:anywhere}
+@media(max-width:700px){main{display:flex;flex-direction:column}aside{order:-1;padding:10px 16px;border:0;border-bottom:1px solid #bdc9be}aside h2{font-size:18px}#filters{display:flex;align-items:end;gap:10px;flex-wrap:wrap}label{margin:4px 0;font-size:13px}select{padding:5px}.column{width:235px}#map{padding:20px 14px;gap:14px}.root{max-width:110px}.root:after{width:14px}.note:empty{display:none}.note{margin:4px 0}#canvas{height:65dvh}}
+</style>
+<header><h1>Mapa okazji</h1><p id="subtitle"></p></header>
+<main><section aria-label="Mapa"><div class="bar"><output id="count" aria-live="polite"></output><button class="nav" id="prev" aria-label="Przewiń w lewo">←</button><button class="nav" id="next" aria-label="Przewiń w prawo">→</button></div>
+<div id="canvas" tabindex="0" aria-label="Przewijana mapa okazji"><div id="map"></div></div></section>
+<aside><h2>Widok mapy</h2><div id="filters"><label>Rodzaj<select id="type"><option value="">Wszystkie</option></select></label><label>Kolejność<select id="sort"><option value="1">Od najbliższych</option><option value="-1">Od najpóźniejszych</option></select></label><label class="check"><input type="checkbox" id="money"> Tylko z pieniędzmi</label></div><p class="note" id="coverage"></p></aside></main>
+<dialog aria-labelledby="title"><button autofocus id="close">Zamknij</button><small id="kind"></small><h2 id="title"></h2><div id="details"></div></dialog>
+<script type="application/json" id="data">__MAP_DATA__</script>
+<script>
+const $ = id => document.getElementById(id);
+const data = JSON.parse($('data').textContent);
+const dialog = document.querySelector('dialog');
+const fits = ['Nie wymaga','Trochę','Bardzo','Brak danych'];
+const lanes = ['Gotowe','Wymaga uzupełnienia','Wymaga rozbudowy','Dopracowanie do ustalenia'];
+const month = new Intl.DateTimeFormat('pl',{month:'long',year:'numeric',timeZone:'UTC'});
+const day = new Intl.DateTimeFormat('pl',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'});
+function el(tag, text, cls) {
+  const node = document.createElement(tag);
+  if (text != null) node.textContent = text;
+  if (cls) node.className = cls;
+  return node;
+}
+function when(row) {
+  return row.date ? day.format(new Date(row.date)) + ' · ' + row.dateKind : 'Bez daty';
+}
+function show(row) {
+  $('kind').textContent = row.type;
+  $('title').textContent = row.name;
+  const box = $('details');
+  box.replaceChildren();
+  for (const fact of [when(row), row.status, row.facts, row.barrier, 'Dopracowanie: '+row.fit,
+    'Pieniądze: '+row.money+' · '+row.amount, 'Sprawdzono: '+row.checked]) {
+    if (fact) box.append(el('p',fact));
+  }
+  for (const [i,url] of row.links.entries()) {
+    const link = el('a',(i ? 'Dodatkowe źródło' : 'Źródło organizatora')+' ↗');
+    link.href=url; link.target='_blank'; link.rel='noopener noreferrer';
+    const p=el('p'); p.append(link); box.append(p);
+  }
+  dialog.showModal();
+}
+function draw() {
+  const dir = Number($('sort').value);
+  const rows = data.rows.filter(r=>(!$('type').value || r.type===$('type').value) && (!$('money').checked || r.money==='Tak'));
+  rows.sort((a,b)=>a.date && b.date ? dir*a.date.localeCompare(b.date) : Number(!a.date)-Number(!b.date));
+  const groups=new Map();
+  for (const row of rows) {
+    const key=row.date?.slice(0,7) || '';
+    if (!groups.has(key)) groups.set(key,[]);
+    groups.get(key).push(row);
+  }
+  $('count').textContent='Widoczne okazje: '+rows.length+' / '+data.rows.length;
+  const map=$('map');
+  map.replaceChildren(el('div',data.project,'root'));
+  if (!rows.length) map.append(el('p',data.rows.length?'Brak okazji dla tych filtrów.':'Brak zweryfikowanych okazji.','notice'));
+  for (const [key,items] of groups) {
+    const col=el('section',null,'column');
+    col.append(el('h2',key?month.format(new Date(key+'-01')):'Bez daty','month'));
+    for (const [i,fit] of fits.entries()) {
+      const cards=items.filter(r=>r.fit===fit);
+      if (!cards.length) continue;
+      const lane=el('section',null,'lane'); lane.append(el('h3',lanes[i]));
+      for (const r of cards) {
+        const card=el('button',null,'card');
+        card.append(el('small',r.type+' · '+when(r)),el('strong',r.name),el('small',r.status));
+        if (r.money==='Tak') card.append(el('small',r.amount,'cash'));
+        if (r.barrier) card.append(el('small','Do oceny właściciela'));
+        card.onclick=()=>show(r); lane.append(card);
+      }
+      col.append(lane);
+    }
+    map.append(col);
+  }
+  $('canvas').scrollLeft=0;
+}
+$('subtitle').textContent=data.project+' · '+data.period;
+$('coverage').textContent=data.coverage;
+for (const t of [...new Set(data.rows.map(r=>r.type))].sort()) $('type').add(new Option(t,t));
+$('filters').onchange=draw;
+$('close').onclick=()=>dialog.close();
+for (const [id,sign] of [['prev',-1],['next',1]]) $(id).onclick=()=>$('canvas').scrollBy({left:sign*Math.max(250,$('canvas').clientWidth*.8)});
+const canvas=$('canvas');
+let drag=null;
+canvas.addEventListener('pointerdown', e=>{
+  if(e.pointerType!=='mouse' || e.button!==0 || e.target.closest('button')) return;
+  drag={x:e.clientX,y:e.clientY,left:canvas.scrollLeft,top:canvas.scrollTop};
+  canvas.setPointerCapture(e.pointerId); canvas.classList.add('drag');
+});
+canvas.addEventListener('pointermove', e=>{
+  if(drag) canvas.scrollTo(drag.left+drag.x-e.clientX,drag.top+drag.y-e.clientY);
+});
+canvas.addEventListener('lostpointercapture', ()=>{drag=null; canvas.classList.remove('drag')});
+draw();
+</script></html>

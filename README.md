@@ -1,6 +1,6 @@
 # Wyciskarka Max
 
-Skill dla Codexa, Claude Code i Antigravity. Analizuje projekt i przygotowuje PDF z kalendarzem konkursów, konferencji, grantów i pilotaży. Przy każdej okazji podaje źródło, termin i ocenę gotowości projektu.
+Skill dla Codexa, Claude Code i Antigravity. Analizuje projekt i przygotowuje interaktywną mapę HTML z terminami konkursów, konferencji, grantów i pilotaży. Przy każdej okazji podaje źródło, termin i ocenę gotowości projektu.
 
 ## Instalacja globalna
 
@@ -8,7 +8,9 @@ Skill dla Codexa, Claude Code i Antigravity. Analizuje projekt i przygotowuje PD
 npx skills add MichalGudowicz29/wyciskarka-max -g -a codex claude-code antigravity
 ```
 
-Do przygotowania kalendarza agent potrzebuje dostępu do źródeł w internecie i narzędzia do zapisu PDF.
+Agent zapisuje profil, postęp i pojedyncze rekordy w lokalnym katalogu `.wyciskarka/`. Przy kolejnym uruchomieniu może wznowić poszukiwania albo wygenerować mapę z zapisanych danych. Kolumny przedstawiają miesiące, karty grupują się według zakresu dopracowania, a panel filtruje typ okazji i finansowanie. Kliknij kartę, aby zobaczyć wymagania, datę sprawdzenia i źródła.
+
+Do wyszukiwania potrzebny jest internet, do eksportu Python 3. Gotowy `mapa-okazji.html` otwiera się w przeglądarce offline. Szablon jest dołączony do skilla.
 
 ## Instalacja z pobranego repozytorium
 

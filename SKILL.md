@@ -1,66 +1,48 @@
 ---
 name: wyciskarka-max
-description: Tworzy kalendarz okazji dla konkretnego projektu na podstawie repozytorium lub opisu i aktualnych źródeł. Użyj, gdy użytkownik chce znaleźć miejsca do zgłoszenia, prezentacji, finansowania lub pilotażu projektu, również bez nagród pieniężnych i po znaczącej rozbudowie projektu, i otrzymać PDF z terminami.
+description: Wyszukuje okazje dla konkretnego projektu, zapisuje postęp i tworzy interaktywną mapę HTML z terminami, źródłami, finansowaniem i wymaganiami. Użyj również do wznowienia lub odświeżenia wcześniejszej kwerendy.
 ---
 
 # Wyciskarka Max
 
-## Poznaj projekt
+## Zacznij od zapisanego stanu
 
-Pracuj na wskazanym projekcie, domyślnie w bieżącym katalogu. Przeczytaj opis, zajrzyj do dema, przykładów, wyników lub implementacji. Zanotuj, co już można pokazać, komu to pomaga, na jakich danych lub lokalizacji opiera się projekt oraz jakie materiały zgłoszeniowe istnieją. Oddziel funkcje działające od planów. Uwzględnij dane o autorze podane w kontekście. Miasto pilotażu nie dowodzi miejsca zamieszkania autora. Gdy brakuje informacji o zespole, statusie studenta czy prawach do projektu, prowadź poszukiwania i zaznacz warunek tam, gdzie zmienia decyzję.
+Pracuj w katalogu wskazanego projektu. Stan lokalny to `.wyciskarka/`. Na początek sprawdź tylko `project.json` i krótki `progress.md`. Zapisuj zmiany po każdej sprawdzonej grupie źródeł, również przed przerwą. Nie wysyłaj prywatnego profilu do wyszukiwarek ani nie publikuj stanu.
 
-## Szukaj szerzej niż nazwa projektu
+- **Pierwszy raz:** przeczytaj README i tylko te przykłady, wyniki lub fragmenty implementacji, które rozstrzygają, co działa. W `project.json` zachowaj krótki profil, lokalizację, ograniczenia oraz ścieżki dowodów i rewizję Git lub daty plików. Domyślny horyzont to 12 miesięcy. Poprzedni PDF lub kalendarz może dostarczyć tropów do sprawdzenia.
+- **Wznowienie:** zacznij od ostatniego punktu w `progress.md`. Trzymaj w nim zakres, sprawdzone kategorie i obszary geograficzne, luki, odrzucone lub zamknięte ścieżki z powodem, otwarte tropy oraz następny krok. Aktualizuj podsumowanie w miejscu. Porównaj stan plików dowodowych, także lokalne zmiany, i czytaj wyłącznie różnice ważne dla profilu.
+- **Odświeżenie:** wydrukuj krótki indeks rekordów (komenda poniżej); ogranicz wynik do potrzebnych wierszy. Otwieraj pojedyncze rekordy. Najpierw sprawdź wygasające terminy, zmiany edycji, luki i niepotwierdzone statusy. Przy zachowanym rekordzie pozostaw rzeczywistą datę weryfikacji. Po terminie sprawdź przedłużenie albo przenieś rekord do `archive/` z powodem w postępie. Nie nadawaj dawnym wynikom statusu świeżo sprawdzonych.
+- **Zmiana układu, filtrów albo sam eksport:** użyj istniejącego stanu bez kwerendy. Nie wczytuj gotowego HTML ani szablonu do kontekstu. Wyniki wyszukiwania przeglądaj krótkimi partiami; wyciągaj fragment regulaminu potrzebny dla konkretnej decyzji. Jedno źródło może obsłużyć kilka ścieżek. Wznawianie ma ograniczać powtórzenia, bez limitu liczby okazji.
 
-Domyślnie obejmij najbliższe 12 miesięcy od dnia wykonania. Dostosuj zakres do prośby. Szukaj w języku regionu oraz po angielsku. Używaj publicznych nazw problemów, metod i grup odbiorców. Nie przesyłaj do wyszukiwarek poufnych danych projektu. Poprzedni kalendarz traktuj jako listę tropów do ponownej weryfikacji.
+## Co trafia na mapę
 
-- Zacznij lokalnie, jeżeli projekt ma związek z miejscem. Sprawdź programy miasta, regionu, uczelni, inkubatorów i instytucji, które pracują z odbiorcami projektu. Rozszerz zasięg na kraj i osiągalne programy zagraniczne.
-- Sprawdź różne formy wykorzystania tego samego wyniku. Demo może pasować do konkursu lub dnia demonstracyjnego, pomiar do posteru, zbiór danych do publikacji, a prototyp do pilotażu. Rozważ również granty, stypendia, hackathony, wyzwania branżowe, warsztaty i akceleratory, zależnie od projektu.
-- Szukając firm, wskaż konkretny problem firmy i publiczną drogę wejścia, np. nabór do pilotażu, zespół przyjmujący propozycje współpracy lub wyzwanie technologiczne. Otwarty kanał współpracy opisuj zgodnie z jego funkcją. Sama lista znanych marek lub ogólny adres centrali nie uzasadniają rekomendacji.
-- Dla każdego istniejącego wyniku sprawdź osobno, kto może go wykorzystać, w jakim innym zastosowaniu i w jakiej formie. Dla prototypu mogą to być m.in. pokaz, test z użytkownikami, badanie porównawcze, publikacja wyników lub współpraca z instytucją. Szukaj też wydarzeń, do których potrzebny byłby nowy element, fizyczny demonstrator, pilotaż lub udokumentowane wyniki. Zachowaj każdą znalezioną ścieżkę, dla której można wskazać konkretny element projektu i konkretne kryterium organizatora. Brak nagrody, opłata za udział i duży zakres rozbudowy nie stanowią filtrów. Nie ograniczaj wyników do rankingu ani z góry ustalonej liczby.
-- Sprawdź archiwa organizatorów i daty ogłoszeń wcześniejszych edycji. Kontynuuj, dopóki istotny typ okazji lub lokalny odbiorca pozostaje niesprawdzony. Sprawdź też małe nabory, sesje tematyczne, nagrody towarzyszące oraz wsparcie udziału. Niski prestiż, mała nagroda lub niepewne dopasowanie nie eliminują tropu z wiarygodnym źródłem i sensownym związkiem z projektem. Przy aktualizacji rozlicz każdy wpis z poprzedniej listy: uwzględnij go albo odnotuj przyczynę zamknięcia albo utraty związku z projektem. Scal duplikaty tej samej edycji i ścieżki. Krótko wskaż luki w pokryciu zamiast dopełniać listę przypadkowymi pozycjami.
+Szukaj lokalnie, krajowo i międzynarodowo, po polsku lub w języku regionu oraz po angielsku. Dla każdego udokumentowanego wyniku zmieniaj odbiorcę, zastosowanie i formę: konkurs, poster, demo, publikacja, hackathon, grant, stypendium, akcelerator, pilotaż miejski lub firmowy. Uwzględnij małe nabory, poboczne sesje i wsparcie wyjazdowe. Przy firmie wskaż publiczną drogę wejścia. Rejestruj luki w pokryciu. Nie ograniczaj wyników do rankingu.
 
-## Zweryfikuj każdą okazję
+Każda ścieżka potrzebuje konkretnego związku z projektem i źródła organizatora. Agregator służy do odkrycia źródła. Otwórz regulamin danej edycji; sprawdź rodzaj terminu, godzinę i strefę (jeśli opublikowane), status, uprawnionych, koszt, wymagany rezultat i formę zgłoszenia. Przy osobnych decyzjach (abstrakt, grant wyjazdowy) utwórz osobne rekordy. Oficjalne przedłużenie lub odwołanie ma pierwszeństwo. Przyszła konferencja nie otwiera zamkniętego CFP. Sprzeczne nierozstrzygnięte daty zapisz obie w szczegółach ze źródłami, bez daty sortowania. Ustaw status niepotwierdzony, gdy organizator nie określa dostępności.
 
-Otwórz oficjalny nabór, regulamin, CFP, stronę współpracy lub archiwum organizatora. Agregator służy do znalezienia źródła. Sprawdź edycję, temat, uprawnionego zgłaszającego, formę zgłoszenia, terminy i istotne koszty. Zależnie od regulaminu sprawdź też wcześniejszą publikację, ponowne wykorzystanie projektu, wymóg wykonania pracy podczas wydarzenia lub udział osobisty. Zapisz bezpośredni link, datę sprawdzenia i konkretny warunek decydujący o dopasowaniu. Oficjalne przedłużenie terminu zastępuje wcześniejszy komunikat dla tej samej ścieżki. Przy nierozstrzygniętej sprzeczności dat podaj obie daty ze źródłami i oznacz termin jako sporny. Jeśli źródło jest niedostępne, wskaż lukę w pokryciu. Gdy niczego nie udało się zweryfikować, napisz to wprost; wynik nie przesądza o braku okazji.
+Ścieżki bez daty, ciągłe i warunkowe również trafiają na mapę. Dla nieogłoszonej edycji wymagaj udokumentowanego cyklu, wpisz „cykliczne · kolejna edycja niepotwierdzona” i przytocz dowód. Nie przenoś dat, kwot ani zasad z poprzedniej edycji. Gdy źródła są niedostępne, odnotuj lukę; nie wnioskuj z tego o braku okazji.
 
-Oddziel status naboru od stanu projektu i warunków formalnych. Używaj określeń „otwarty”, „zapowiedziany”, „ciągły” lub „kontakt bez terminu” zgodnie ze źródłem. Sprawdzaj dostępność każdej formy zgłoszenia na dzień raportu. Przyszła data konferencji nie otwiera zamkniętego CFP. Zachowaj pozostałe dostępne ścieżki tego wydarzenia. Jeżeli organizator potwierdza ścieżkę, ale milczy o dostępności, oznacz „status naboru niepotwierdzony”. Oficjalne odwołanie edycji lub zakończenie cyklu ma pierwszeństwo przed archiwum. Jedyną dopuszczalną prognozą jest kolejna edycja wydarzenia o udokumentowanej cykliczności. Przytocz deklarację organizatora albo daty edycji potwierdzające cykl. Wpisz „cykliczne · kolejna edycja niepotwierdzona”. Nie przenoś dawnych dat, kwot ani zasad na przyszłą edycję. Pojedyncze zakończone wydarzenie bez zapowiedzi lub dowodu cyklu pomiń w kalendarzu. Przy aktualizacji krótko rozlicz jego usunięcie.
+Bariera formalna nigdy nie usuwa tematycznie pasującej ścieżki. W polu barier podaj kto może aplikować, warunek (np. spółka na określonym etapie albo uczelnia) i czy oficjalnie przewidziano rolę autora. Odróżnij nieznaną kwalifikację od potwierdzonego wykluczenia w tej edycji. Nie zakładaj, że afiliacja wystarczy.
 
-Zachowaj w głównej tabeli każdą tematycznie uzasadnioną ścieżkę, także gdy autor dziś nie spełnia wymogu formalnego. W ostatniej kolumnie wpisz „do oceny właściciela”, wskaż barierę (np. tylko spółki, uczelnie, mieszkańcy lub wnioskodawcy w określonym wieku) i kto może aplikować. W szczegółach odróżnij warunek niespełniony od nieustalonego. Przy warunku nieustalonym dodaj pytanie rozstrzygające. Przy naborze dla spółek sprawdź wymagany etap rejestracji, jeżeli regulamin go podaje. Przy naborze instytucjonalnym opisz dopuszczoną rolę autora, jeśli wskazuje ją źródło; w pozostałych przypadkach wpisz „brak potwierdzonej ścieżki udziału autora”. Nie zakładaj, że założenie spółki, znalezienie partnera lub afiliacja automatycznie spełnią regulamin. Przy barierze nieusuwalnej oznacz „autor nie kwalifikuje się w tej edycji”. Formalna dostępność dla autora i dopracowanie projektu to niezależne informacje.
+Oceń dopracowanie niezależnie od formalności: **Nie wymaga** przy dowodach dla wszystkich obowiązkowych kryteriów merytorycznych, **Trochę** przy ograniczonym uzupełnieniu, **Bardzo** przy nowym istotnym wyniku, **Brak danych** przy niewystarczających dowodach. Formularz i abstrakt to praca nad zgłoszeniem. W szczegółach nazwij istniejący dowód oraz brakujący aspekt i pytanie, na które projekt musi odpowiedzieć. Zostaw wybór rozwiązania autorowi. Pomiń rekomendacje i szacunki roboczogodzin.
 
-Oceń **zakres dopracowania projektu** przez porównanie materiałów projektu z opublikowanymi kryteriami danej ścieżki. Stosuj jedną skalę:
-- **Nie wymaga** — wskaż dowód dla każdego obowiązkowego kryterium merytorycznego danej ścieżki. Wypełnienie formularza, napisanie abstraktu lub tłumaczenie prezentacji to przygotowanie zgłoszenia.
-- **Trochę** — brakuje konkretnego uzupełnienia istniejącego wyniku, np. udokumentowania wymaganego przypadku użycia. Nazwij uzupełnienie i kryterium.
-- **Bardzo** — potrzebny jest nowy istotny wynik, np. działające urządzenie zamiast modelu 3D, walidacja w środowisku docelowym lub badanie, z którego dopiero powstanie publikacja. Wskaż, co projekt już ma i czego wymaga organizator.
-- Jeżeli materiały projektu lub regulamin nie pozwalają zastosować skali, wpisz „brak danych” i nazwij brakującą informację. Brak dowodu w repozytorium nie dowodzi braku funkcji. Wiek, status studenta, spółka, prawa do projektu i koszty należą do warunków udziału. Nie zwiększają oceny dopracowania aplikacji.
+**Pieniądze** dotyczą konkretnej ścieżki. „Tak” wymaga źródła potwierdzającego świadczenie; podaj rodzaj, walutę, limit lub pulę oraz beneficjenta, albo „kwota niepodana”. Przy inwestycji podaj warunki. „Nie” i „–” tylko dla potwierdzonego braku wypłaty lub wyłącznie rzeczowej korzyści. Milczenie organizatora to „Brak danych”. Koszt uczestnictwa opisz osobno.
 
-## Oddaj kalendarz w PDF
+## Zapis i eksport
 
-Utwórz rzeczywisty PDF w języku użytkownika. Domyślnie zapisz go w katalogu projektu jako kalendarz-okazji-<projekt>-<RRRR-MM-DD>.pdf. Zachowaj poprzedni raport, jeśli nazwa już istnieje. Użyj skilla pdf, jeśli jest dostępny, lub wydruku lokalnego HTML do PDF w przeglądarce z regułami druku A4. Dobierz czcionkę obsługującą znaki języka raportu.
+`project.json` zawiera publiczne pola `project`, `period` i opcjonalne `coverage` (data raportu, luki lub zakres aktualizacji). Pozostałe pola profilu są prywatne. W `records/` trzymaj jeden JSON na ścieżkę, z trwałą nazwą pliku według organizatora, edycji i ścieżki. Aktualizuj tylko zmienione rekordy. Zapisuj kompletne pliki, przy aktualizacji zastępuj je atomowo. Przykład formatu (dane ilustracyjne):
 
-### 1. Pełny kalendarz
+```json
+{"name":"Grant pilotażowy","type":"Grant","date":"2027-02-01","dateKind":"wniosek","status":"otwarty","fit":"Trochę","money":"Tak","amount":"do 20 000 PLN dla instytucji","facts":"Prototyp działa. Wymagany jest dowód użycia w terenie. Jakie wyniki wykazuje pilotaż?","barrier":"Tylko uczelnie. Rola autora nieokreślona.","links":["https://example.org/call"],"checked":"2026-11-26"}
+```
 
-Na pierwszej stronie umieść tytuł „Kalendarz okazji”, nazwę projektu, zakres dat, datę weryfikacji i krótką legendę. Bezpośrednio pod nimi rozpocznij tabelę w poziomym A4:
+`date` to oficjalna data ISO albo null, `dateKind` określa rodzaj terminu. Godzinę i strefę dodaj w `dateKind`. Zachowaj spójne nazwy kategorii. `facts` to najwyżej kilka rzeczowych zdań ze statusem projektu, wymaganiami i kosztami. Podaj klikalne źródła do poszczególnych twierdzeń.
 
-| Termin i status | Okazja i źródło | Pieniądze? | Kwota | Czy wymaga dopracowania? | Co jest / czego wymaga organizator |
-|---|---|---|---|---|---|
-| Data oraz rodzaj terminu albo status bez daty | Nazwa konkretnej ścieżki jako klikalny link do organizatora | Tak / Nie / Brak danych | Kwota z walutą, „kwota niepodana”, „-” lub „brak danych” | Nie wymaga / Trochę / Bardzo; przy braku podstaw: Brak danych | Krótki fakt z projektu i odpowiadający mu wymóg. W razie potrzeby dopisz istotną opłatę lub ograniczenie formalne. |
+Uruchom dołączony skrypt z katalogu projektu. Zastąp SKILL_DIR rzeczywistym katalogiem tego SKILL.md. Python 3, bez instalowania bibliotek. Pierwsza komenda wyświetla indeks; druga generuje samodzielny raport offline. Przy kolejnym eksporcie użyj tej samej ścieżki dedykowanego raportu.
 
-„Pieniądze?” oznaczają świadczenie pieniężne **dla uczestnika lub projektu**. Zasady wypełniania są wspólne dla całego raportu:
+```sh
+python3 "SKILL_DIR/scripts/map.py" .wyciskarka
+python3 "SKILL_DIR/scripts/map.py" .wyciskarka mapa-okazji.html
+```
 
-| Co potwierdza źródło danej edycji | Pieniądze? | Kwota |
-|---|---|---|
-| Nagroda pieniężna, grant, stypendium, refundacja lub oferowana inwestycja na opublikowanych warunkach | Tak | Kwota i waluta albo „kwota niepodana”; dopisz rodzaj świadczenia |
-| Wyłącznie świadczenie niepieniężne lub jednoznaczny brak wypłaty | Nie | - |
-| Organizator nie określa świadczeń lub warunki nowej edycji nie są znane | Brak danych | brak danych |
-
-Świadczenie przypisz tylko do ścieżki, dla której jest przewidziane. Przy inwestycji wskaż jej warunkowość i ewentualne udziały, przy grancie instytucjonalnym wskaż beneficjenta. Opłaty wpisowe zapisuj osobno jako koszt. Bezpłatny udział, mentoring i spotkanie z inwestorami same w sobie nie rozstrzygają o wypłacie. Rozróżnij kwotę za miejsce, limit „do”, pulę łączną i kwotę na osobę, zespół lub projekt. Historyczne świadczenia podawaj w szczegółach z rokiem źródła.
-
-Sortuj po potwierdzonym terminie działania. Rozróżnij zamknięcie naboru, abstrakt, wniosek o wsparcie i samo wydarzenie. Daj osobny wiersz, gdy termin wymaga osobnego zgłoszenia. Jeśli znasz tylko datę wydarzenia, oznacz ją wprost. Na końcu umieść grupę „Bez terminu / obserwować”. Nie wyznaczaj własnych dat rozpoczęcia, ponownego sprawdzenia ani nakładu pracy. Podawaj godziny, strefy czasowe, długość wydarzenia czy wymiar obowiązkowego udziału wyłącznie wtedy, gdy publikuje je organizator.
-
-Każdy wiersz zawiera klikalne źródło. Jeśli kwota lub kryterium pochodzi z odrębnego regulaminu, dodaj drugi link w tej samej komórce. Stosuj czytelną typografię, cienkie linie, tekstowe statusy i nagłówki powtarzane po podziale strony. Pozwól tabeli przejść na kolejne strony. Używaj krótkich rzeczowych wpisów, bez ozdobników, haseł promocyjnych i ocen atrakcyjności.
-
-### 2. Szczegóły i kontrola
-
-Opisz każdą okazję raz w kolejności tabeli. Podaj organizatora, uprawnionych, formę udziału, wymagane materiały, istotne koszty i bezpośrednie źródła. Przy rozbudowie zestaw udokumentowany stan projektu z wymaganym rezultatem. Nazwij brakujący aspekt i pytanie, na które projekt powinien odpowiedzieć. Zachowaj rozróżnienie pomiędzy oficjalnym wymogiem a oceną zakresu dopracowania. Nie projektuj za autora rozwiązania, nie szacuj czasu, nie dodawaj rekomendacji ani wniosków za czytelnika. Osobna tabela finansowa jest potrzebna tylko wtedy, gdy szczegóły kilku progów, miejsc lub świadczeń nie mieszczą się czytelnie w głównej tabeli; podstawowa kwota lub zakres zawsze pozostaje w głównym wierszu.
-
-Przed oddaniem porównaj wykaz zweryfikowanych ścieżek z tabelą i opisami, w tym pozycje bez nagród i wymagające dużej rozbudowy. Sprawdź w źródłach terminy, statusy, świadczenia, kwoty i wymagania. Otwórz gotowy PDF, sprawdź podział stron, polskie znaki oraz aktywne odsyłacze każdego wiersza. Podaj link do pliku. Wysyłanie zgłoszeń i uruchamianie monitoringu wymaga osobnego polecenia.
+Oddaj link do HTML i wskaż zapisany stan do wznowienia. Raport można przesłać jako jeden plik. Nie wysyłaj zgłoszeń i nie ustawiaj monitoringu bez osobnej prośby.
